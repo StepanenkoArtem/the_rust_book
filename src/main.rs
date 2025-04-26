@@ -2,11 +2,14 @@ use rand;
 use std::cmp::Ordering;
 use std::io;
 
+const MIN_RANGE: u32 = 10;
+const MAX_RANGE: u32 = 20;
+
 fn main() {
     println!("This is the guess number game!");
-    println!("Enter the number from 0 to 100");
+    println!("Enter the number from {MIN_RANGE} to {MAX_RANGE}");
 
-    let guessed_number: u32 = get_guess_number();
+    let guessed_number: u32 = get_guess_number(MIN_RANGE, MAX_RANGE);
     let array = [1, 2, 3, 4, 5, 6];
 
     loop {
@@ -32,6 +35,6 @@ fn main() {
     println!("{}, {}, {}", array[0], array[1], array[4]);
 }
 
-fn get_guess_number() -> u32 {
-    rand::random_range(0..=100)
+fn get_guess_number(min_range: u32, max_range: u32) -> u32 {
+    rand::random_range(min_range..=max_range)
 }
