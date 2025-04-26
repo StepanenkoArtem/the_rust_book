@@ -9,6 +9,7 @@ fn main() {
     let guessed_number: u32 = rand::random_range(0..=100);
 
     loop {
+        let guessed_number: u32 = rand::random_range(0..=10);
         let mut user_input: String = String::new();
         io::stdin()
             .read_line(&mut user_input)
@@ -25,4 +26,6 @@ fn main() {
             }
         }
     }
+
+    println!("The initial value of guessed_number is {guessed_number}");
 }
