@@ -6,8 +6,8 @@ fn main() {
     println!("This is the guess number game!");
     println!("Enter the number from 0 to 100");
 
-    let guessed_number: u32 = rand::random_range(0..=100);
-    let tup = (40, 'm', true);
+    let guessed_number: u32 = get_guess_number();
+    let array = [1, 2, 3, 4, 5, 6];
 
     loop {
         let mut user_input: String = String::new();
@@ -22,11 +22,16 @@ fn main() {
             Ordering::Greater => println!("Too big"),
             Ordering::Equal => {
                 println!("Bingo!!");
+
                 break;
             }
         }
     }
 
     println!("The initial value of guessed_number is {guessed_number}");
-    println!("{}, {}, {}", tup.0, tup.1, tup.2);
+    println!("{}, {}, {}", array[0], array[1], array[4]);
+}
+
+fn get_guess_number() -> u32 {
+    rand::random_range(0..=100)
 }
