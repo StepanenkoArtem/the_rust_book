@@ -7,9 +7,9 @@ fn main() {
     println!("Enter the number from 0 to 100");
 
     let guessed_number: u32 = rand::random_range(0..=100);
+    let tup = (40, 'm', true);
 
     loop {
-        let guessed_number: u32 = rand::random_range(0..=10);
         let mut user_input: String = String::new();
         io::stdin()
             .read_line(&mut user_input)
@@ -28,4 +28,5 @@ fn main() {
     }
 
     println!("The initial value of guessed_number is {guessed_number}");
+    println!("{}, {}, {}", tup.0, tup.1, tup.2);
 }
