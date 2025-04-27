@@ -2,17 +2,20 @@ use rand;
 use std::cmp::Ordering;
 use std::io;
 
-const MIN_RANGE: u32 = 10;
-const MAX_RANGE: u32 = 20;
+const MIN_RANGE: u32 = 1;
+const MAX_RANGE: u32 = 500;
 
 fn main() {
     println!("This is the guess number game!");
     println!("Enter the number from {MIN_RANGE} to {MAX_RANGE}");
 
     let guessed_number: u32 = get_guess_number(MIN_RANGE, MAX_RANGE);
-    let array = [1, 2, 3, 4, 5, 6];
+    let mut counter: u32 = 0;
+    let mut is_guessed = false;
 
-    loop {
+    while !is_guessed {
+        counter += 1;
+
         let mut user_input: String = String::new();
         io::stdin()
             .read_line(&mut user_input)
@@ -25,14 +28,18 @@ fn main() {
             Ordering::Greater => println!("Too big"),
             Ordering::Equal => {
                 println!("Bingo!!");
-
-                break;
+                is_guessed = true;
             }
         }
     }
 
-    println!("The initial value of guessed_number is {guessed_number}");
-    println!("{}, {}, {}", array[0], array[1], array[4]);
+    println!("You've guessed the number after {counter} attempts");
+
+    let range = 1..=100;
+
+    for element in range {
+        println!("{element}");
+    }
 }
 
 fn get_guess_number(min_range: u32, max_range: u32) -> u32 {
