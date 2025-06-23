@@ -1,23 +1,22 @@
-use rand;
-use std::cmp::Ordering;
-use std::io;
+struct User {
+    name: String,
+    email: String,
+    age: i8,
+}
 
 fn main() {
-    println!("This is the guess number game!");
-    println!("Enter the number from 0 to 100");
+    let mut new_user = build_user(12, String::from("Foobar"), String::from("ffobar@gmail.com"));
+    new_user.name = String::from("John Doe");
+    let another_user = User {
+        name: String::from("Foo Bar Bar Booo"),
+        ..new_user
+    };
+    println!(
+        "{}, {} - {}",
+        another_user.name, another_user.age, another_user.email
+    );
+}
 
-    let mut user_input: String = String::new();
-    let guessed_number: u32 = rand::random_range(0..=100);
-
-    io::stdin()
-        .read_line(&mut user_input)
-        .expect("Failed to read line");
-
-    let user_number: u32 = user_input.trim().parse().unwrap();
-
-    match user_number.cmp(&guessed_number) {
-        Ordering::Less => println!("Too small"),
-        Ordering::Greater => println!("Too big"),
-        Ordering::Equal => println!("Bingo!!"),
-    }
+fn build_user(age: i8, name: String, email: String) -> User {
+    User { name, age, email }
 }
