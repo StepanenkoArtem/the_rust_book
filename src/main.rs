@@ -1,3 +1,4 @@
+#[derive(Debug)]
 struct Figure {
     width: u32,
     height: u32,
@@ -5,7 +6,7 @@ struct Figure {
 
 fn main() {
     let rectangle = Figure {
-        width: 114,
+        width: 117,
         height: 34,
     };
 
@@ -14,7 +15,8 @@ fn main() {
         rectangle.width,
         rectangle.height,
         area(&rectangle)
-    )
+    );
+    println!("rectangle is {:#?}", rectangle);
 }
 
 fn area(figure: &Figure) -> u32 {
