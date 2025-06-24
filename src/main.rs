@@ -5,8 +5,9 @@ struct Figure {
 }
 
 fn main() {
+    let scale = 3;
     let rectangle = Figure {
-        width: 117,
+        width: 30 * scale,
         height: 34,
     };
 
@@ -16,7 +17,7 @@ fn main() {
         rectangle.height,
         area(&rectangle)
     );
-    println!("rectangle is {:#?}", rectangle);
+    dbg!(&rectangle);
 }
 
 fn area(figure: &Figure) -> u32 {
