@@ -4,22 +4,48 @@ struct Figure {
     height: u32,
 }
 
+impl Figure {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&self, another_rectangle: &Figure) -> bool {
+        another_rectangle.width <= self.width && another_rectangle.height <= self.height
+    }
+
+    fn square(width: u32) -> Self {
+        Self {
+            width,
+            height: width,
+        }
+    }
+}
+
 fn main() {
-    let scale = 3;
+    let scale = 2;
     let rectangle = Figure {
         width: 30 * scale,
         height: 34,
     };
 
+    let bigger_rectangle = Figure {
+        width: 65,
+        height: 35,
+    }; 
+
+    let square = Figure::square(40);
+    dbg!(square);
+
+    println!("{}", rectangle.area());
+
     println!(
-        "The are of rectangel with width {} and height {} is {}",
-        rectangle.width,
-        rectangle.height,
-        area(&rectangle)
+        "Is first rectangle can hold then the first one: {}",
+        rectangle.can_hold(&bigger_rectangle)
     );
-    dbg!(&rectangle);
+
+    println!(
+        "Is second rectangle can hold then the second one: {}",
+        bigger_rectangle.can_hold(&rectangle)
+    );
 }
 
-fn area(figure: &Figure) -> u32 {
-    figure.width * figure.height
-}
