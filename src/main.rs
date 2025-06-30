@@ -21,6 +21,12 @@ impl Figure {
     }
 }
 
+#[derive(Debug)]
+enum Message {
+    Hello(String),
+    Bye(String),
+}
+
 fn main() {
     let scale = 2;
     let rectangle = Figure {
@@ -28,14 +34,19 @@ fn main() {
         height: 34,
     };
 
+    let hello = Message::Hello("Hello".to_string());
+    let bye = Message::Bye("Bye".to_string());
     let bigger_rectangle = Figure {
         width: 65,
         height: 35,
-    }; 
+    };
 
     let square = Figure::square(40);
+    dbg!(&hello);
     dbg!(square);
 
+    let boolean = true;
+    println!("{}", boolean.to_string());
     println!("{}", rectangle.area());
 
     println!(
@@ -48,4 +59,3 @@ fn main() {
         bigger_rectangle.can_hold(&rectangle)
     );
 }
-
