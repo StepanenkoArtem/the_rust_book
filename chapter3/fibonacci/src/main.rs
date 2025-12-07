@@ -9,7 +9,7 @@ fn main() {
         Err(_) => println!("Connot read user input "),
     }
 
-    let number: i128 = match number.trim().parse() {
+    let number: u128 = match number.trim().parse() {
         Ok(number) => number,
         Err(_) => {
             panic!("'{}' is not a number", number.trim());
@@ -20,15 +20,12 @@ fn main() {
     println!("Fibonacci value for number {number} is {fibo}")
 }
 
-fn get_fibonacci_number(number: i128) -> i128 {
-    if number == 1 {
-        return number;
-    }
-
-    match number.checked_mul(number - 1) {
-        Some(value) => get_fibonacci_number(value),
-        None => {
-            panic!("The result is too high to be calculated")
-        }
-    }
+fn get_fibonacci_number(number: u128) -> u128 {
+    let mut temp = [0, 1];
+    for _ in 0..=number {
+        let old = temp[1];
+        let new = temp[0] + temp[1];
+        temp = [old, new];
+    };
+    temp[1]
 }
